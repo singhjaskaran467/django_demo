@@ -1,0 +1,76 @@
+To install virtual environment in the system:
+    pip install virtualenvwrapper-win
+
+To create virtual environment:
+    mkvirtualenv {env_name}
+
+To enter in existing virtual environment:
+    workon {env_name}
+
+To install django in env:
+    pip install django
+
+    django-admin --version
+
+Create new project:
+    django-admin startproject {project_name}
+
+To create an app in django :
+    python manage.py startapp {appname}
+
+To run the server:
+    python manage.py runserver
+
+
+Routing:
+    in urls.py(of project):
+        update urlpatterns like :
+            path('<path>', include('<name of application>.urls')),
+    In urls.py(of application):
+        update urlpatterns like :
+            path('<route>', views.<in views.py name of method >, name='<name of method in views.py>>'),
+
+To add external assets(JS files, images):
+    create a folder static in the project(base directory)
+    put all files in that folder
+    To save all static files in assets folder:
+        python manage.py collectstatic
+
+Migrations:
+
+    DB connectivity:
+        in settings.py(of project) file look for DATABASES and fill out the db details
+        DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'django_demo',
+            'USER': 'postgres',
+            'PASSWORD': 'postgres',
+            'HOST': 'localhost',
+            'PORT': 5433
+            }
+        }
+
+
+    Create a migration:
+        Add the Application in list of installed apps in settings.py(of project) (ex: travello.apps.TravelloConfig)
+        For using images: do first
+            pip install pillow
+
+        python manage.py makemigrations (this will create a file in migrations)
+        To make table in DB: it makes the sql query
+            python manage.py sqlmigrate <name of application>(travello) <migration number>(0001)
+            python manage.py migrate
+
+
+
+To create superuser:
+    python manage.py createsuperuser
+
+To login to admin panel:
+    http://localhost:8000/admin/
+
+Register model in admin.py(of application)(to use models on admin panel):
+    admin.site.register(<model name>
+
+
