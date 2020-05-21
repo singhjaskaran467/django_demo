@@ -71,6 +71,4 @@ To login to admin panel:
     http://localhost:8000/admin/
 
 Register model in admin.py(of application)(to use models on admin panel):
-    admin.site.register(<model name>
-
-
+    admin.site.register(<model name>)
